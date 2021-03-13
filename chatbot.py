@@ -70,17 +70,18 @@ def chat():
             reply = input("YOU: ")
             outputCategory = parseInput(reply)
             if outputCategory != None:
-                print("DEBUG: Input parsed. Category: " + outputCategory[0])
+                #print("DEBUG: Input parsed. Category: " + outputCategory[0])
                 JimSay(outputCategory, name)
                 if outputCategory[0] == "bye":
                     break
             else:
                 unknownCount += 1
                 if unknownCount % 3 == 0:
-                    print("DEBUG: Try again")
+                    #print("DEBUG: Try again")
                     JimAsk("try again")
                 outputTypes = ["filler", "tell a joke", "quote", "anecdote"]
                 JimSay(random.choice(outputTypes))
+
                 '''elif unknownCount % 5 == 0:
                     print("DEBUG: filler")
                     JimSay(["filler"], name)
