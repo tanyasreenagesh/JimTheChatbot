@@ -10,6 +10,11 @@
     "Do you want to hear a joke",
     "Would you like to hear a joke"
   ],
+  "tell a joke": [
+    "I just remembered the funniest thing, let me tell you!",
+    "I just remembered a joke!",
+    "Let me tell you the funniest joke!"
+  ],
   "ask for level":
   ["How hard would you like your workout to be today? You may choose between easy, medium, and hard.",
    "Are you looking to do an easy, medium, or hard workout today?",
@@ -60,6 +65,13 @@
     "Maybe this will help",
     "Let me share with you what I did",
     "You're not alone - I dreaded working out too"
+  ],
+  "welcome": [
+    "You're very welcome",
+    "Of course",
+    "No problem at all",
+    "It is my pleasure",
+    "Happy to help"
   ],
   "filler": [
     "That's awesome",
