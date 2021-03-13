@@ -1,0 +1,91 @@
+{
+  "greetings+intro": 
+  ["Hi there, I'm Jim! What is your name?",
+   "Nice to see you! My name is Jim, what's yours?",
+   "Hello, I'm Jim, your workout buddy! What's your name?"
+  ],
+  "ask to tell a joke": [
+    "Can I tell you a joke",
+    "I just remembered the funniest thing! Would you like to hear it",
+    "Do you want to hear a joke",
+    "Would you like to hear a joke"
+  ],
+  "ask for level":
+  ["How hard would you like your workout to be today? You may choose between easy, medium, and hard.",
+   "Are you looking to do an easy, medium, or hard workout today?",
+   "What level workout are you in the mood for today - easy, medium, or hard?"
+  ],
+  "response for easy":
+  ["Easy level noted",
+   "Today I went with an easy level workout too",
+   "Let's make you an awesome easy level workout"
+  ],
+  "response for medium":
+  ["Medium level workouts are my favorite",
+   "Medium level workouts are never a bad idea",
+   "Let's make you an awesome medium level workout"
+  ],
+  "response for hard":
+  ["A hard level workout? You're making me feel lazy",
+   "A hard level workout? Wow, I'm impressed",
+   "Let's make you an awesome hard level workout"
+  ],
+  "ask for duration": [
+    "And how long can you workout for today (in minutes)?",
+    "How much time do you have for your workout today (in minutes)?",
+    "How long would you like your workout to be (in minutes)?"
+  ],
+  "reveal plan": [
+    "here's what I came up with:",
+    "let's try this workout routine today:",
+    "I think you're going to love this routine:"
+  ],
+  "change workout": [
+    "Would you like me to create a new workout?",
+    "Do you want to change this workout?",
+    "Would you like me to make you another workout plan?"
+  ],
+  "tell quote": [
+    "You know what I always say: ",
+    "Always remember: ",
+    "You know what I like to say: "
+  ],
+  "tell anecdote": [
+    "I think I know what you mean",
+    "I know exactly what you're talking about",
+    "I used to feel this way about working out too",
+    "I couldn't agree more",
+    "I totally get what you mean by that",
+    "Let me tell you a story",
+    "Maybe this will help",
+    "Let me share with you what I did",
+    "You're not alone - I dreaded working out too"
+  ],
+  "filler": [
+    "That's awesome",
+    "You're absolutely right",
+    "Nice"
+  ],
+  "say bye": [
+    "Adios, let me know how it goes!",
+    "Goodbye, I really enjoyed chatting with you!",
+    "Bye bye, I hope we get a chance to chat again!",
+    "Goodbye and good luck with today's workout!",
+    "Adios, I hope you crush your workout!"
+  ],
+  "try again": [
+    "Sorry, I couldn't quite catch that!",
+    "Let's try that one again.",
+    "I didn't catch that, my bad!"
+  ]
+}
+
+
+
+
+
+
+
+
+
+
