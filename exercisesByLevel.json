@@ -1,0 +1,34 @@
+{
+  "easy":
+  [
+    "Air Swimming",
+    "Glute Bridge",
+    "Chair Squat",
+    "Knee Push-Up",
+    "Stationary Lunge",
+    "Bird Dog",
+    "Forearm Plank",
+    "Bicycle Crunch"
+  ],
+  "medium":
+  [
+    "Reverse Lunge",
+    "Push-Up",
+    "Single-Leg Bridge",
+    "Squat",
+    "Walking Lunge",
+    "Get-Up Squat",
+    "Superman",
+    "Plank with Leg Lift"
+  ],
+  "hard": 
+  [
+    "Runner's Crunch",
+    "Burpee With Push-Up",
+    "Get-Up Squat",
+    "Overhead Squat",
+    "One-Legged Push-Up",
+    "Jumping Lunges",
+    "Advanced Bird Dog"
+  ]
+}
