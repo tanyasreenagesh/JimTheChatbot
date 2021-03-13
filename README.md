@@ -8,6 +8,8 @@ chatbot (aka Jim) is to formulate personalized workout plans for the day based
 on the difficulty level (easy, medium or hard) and duration of time the human
 would like to workout for.
 
+![chattingWithJim](https://user-images.githubusercontent.com/35225535/111051368-5cb5fc00-8407-11eb-88d2-9fbbbab1f3b9.PNG)
+
 ### Running the Code
 
 To chat with Jim, run:
