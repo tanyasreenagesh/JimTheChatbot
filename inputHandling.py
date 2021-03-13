@@ -1,7 +1,7 @@
 import json
 
 # create list of exercises
-with open('howToSteps.json') as f:
+with open('data/howToSteps.json') as f:
     outputCategories = json.load(f)
 exercisesList = outputCategories.keys()
 
@@ -48,17 +48,25 @@ def parseInput(reply):
     reply = reply.lower()
 
     # category: howTo
-    if "how to" in reply:
+    if "how to" in reply or "how do i" in reply:
         for ex in exercisesList:
             if ex.lower() in reply:
                 return ["howTo", ex]
     
+    # category: welcome
+    if "thank" in reply:
+        return ["welcome"]
+
+    # category: joke
+    if "joke" in reply or "fun" in reply:
+        return ["tell a joke"]
+
     # category: anecdote
-    if "story" or "anecdote" in reply:
+    if "story" in reply or "anecdote" in reply:
         return ["anecdote"]
     
     # category: quote
-    if "quote" or "motivat" or "inspir" in reply:
+    if "quote" in reply or "motivat" in reply or "inspir" in reply:
         return ["quote"]
     
     # category: bye

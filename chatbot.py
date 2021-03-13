@@ -8,8 +8,8 @@ from outputHandling import *
 # 2: ask difficulty level
 # 3: ask duration of workout
 # 4: create workout
-#flow = [False, False, False, False, False]
-flow = [True, True, True, True, True]
+flow = [False, False, False, False, False]
+#flow = [True, True, True, True, True]
 name = ''
 diffLevel = ''
 unknownCount = 0
@@ -44,20 +44,20 @@ def chat():
             JimAsk("ask for duration")
             reply = input("YOU: ")
             duration = getDuration(reply)
-            if duration == -1:
+            if duration == -1 or not duration.isnumeric():
                 JimAsk("try again")
             else:
                 flow[3] = True
             
         elif not flow[4]:
             JimAsk("reveal plan", name)
-            print("JIM:", createWorkout(diffLevel, duration))
+            createWorkout(diffLevel, int(duration))
 
             # Check if workout needs to be changed
             JimAsk("change workout")
             reply = input("YOU: ")
             while "no" not in reply.lower():
-                print("JIM:", createWorkout(diffLevel, duration))
+                createWorkout(diffLevel, int(duration))
                 JimAsk("change workout")
                 reply = input("YOU: ")
                 
@@ -70,17 +70,26 @@ def chat():
             reply = input("YOU: ")
             outputCategory = parseInput(reply)
             if outputCategory != None:
-                JimSay(outputCategory)
+                print("DEBUG: Input parsed. Category: " + outputCategory[0])
+                JimSay(outputCategory, name)
+                if outputCategory[0] == "bye":
+                    break
             else:
                 unknownCount += 1
                 if unknownCount % 3 == 0:
+                    print("DEBUG: Try again")
                     JimAsk("try again")
-                elif unknownCount % 5 == 0:
-                    JimAsk("filler")
+                outputTypes = ["filler", "tell a joke", "quote", "anecdote"]
+                JimSay(random.choice(outputTypes))
+                '''elif unknownCount % 5 == 0:
+                    print("DEBUG: filler")
+                    JimSay(["filler"], name)
                 elif unknownCount % 2 == 0:
-                    JimSay(["quote"])
+                    print("DEBUG: quote")
+                    JimSay(["quote"], name)
                 else:
-                    JimSay(["anecdote"], name)
+                    print("DEBUG: anecdote")
+                    JimSay(["anecdote"], name)'''
 
 
 chat()

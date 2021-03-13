@@ -3,9 +3,10 @@ import random
 import requests
 import time
 
-with open('outputCategories.json') as f:
+with open('data/outputCategories.json') as f:
     outputCategories = json.load(f)
-
+with open('data/exercisesByLevel.json') as f:
+    exercisesByLevel = json.load(f)
 
 def JimAsk(category, name=''):
     if category == "ask for level" and name != '':
@@ -21,26 +22,46 @@ def JimAsk(category, name=''):
 
 def JimSay(category, name=''):
     if category[0] == "howTo":
-        with open('howToSteps.json') as f:
+        with open('data/howToSteps.json') as f:
             howTo = json.load(f)
         print("JIM: This is how you do the " + category[1] + " exercise: " + howTo[category[1]])
     elif category[0] == "quote":
-        with open('quotes.json') as f:
+        with open('data/quotes.json') as f:
             quotes = json.load(f)
         print("JIM:", random.choice(outputCategories["tell quote"]) + random.choice(quotes["quotes"]))
     elif category[0] == "anecdote":
-        with open('anecdotes.json') as f:
+        with open('data/anecdotes.json') as f:
             anecdotes = json.load(f)
         print("JIM:", random.choice(outputCategories["tell anecdote"]) + ", " + name + "! " + random.choice(anecdotes["anecdotes"]))
     elif category[0] == "filler":
         print("JIM:", random.choice(outputCategories["filler"]) + ", " + name + "!") 
     elif category[0] == "bye":
-        print("JIM:", random.choice(outputCategories["bye"])) 
+        print("JIM:", random.choice(outputCategories["say bye"])) 
+    elif category[0] == "welcome":
+        print("JIM:", random.choice(outputCategories["welcome"]) + ", " + name) 
+    elif category[0] == "tell a joke":
+        print("JIM:", random.choice(outputCategories["tell a joke"]))
+        tellJoke("yes")
     
 
+# Creates the personalized workout plan
 def createWorkout(level, duration):
-    return "INSERT HERE: Awesome plan for " + duration + " mins long, " + level + " level workout."
+    exercises = random.sample(exercisesByLevel[level], 3)
+    roundTime = duration//4
+    warmAndCoolTime = roundTime//2
+    breakTime = roundTime//4
+    exerciseTime = (roundTime - breakTime)//3
 
+    print("     Warm-up: " + str(warmAndCoolTime) + " minutes")
+    print("     Do 3 rounds of:")
+    for ex in exercises:
+        print("        " + ex + ": " + str(exerciseTime) + " mins")
+    print("        Short break: " + str(breakTime) + " mins")
+    print("     Each round will be roughly " + str(roundTime) + " minutes long.")
+    print("     Cool-down: " + str(warmAndCoolTime) + " minutes")
+
+
+# Connects to API and tells a joke depending on reply input
 def tellJoke(reply):
     if "no" in reply.lower():
         print("JIM: Okay, maybe next time!")
