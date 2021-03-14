@@ -1,15 +1,15 @@
-# Chatbot
-
-from inputHandling import *
-from outputHandling import *
+# chatbot.py - Framework of the chatbot that combines input and output handling.
 
 # 0: intro/get name of user
 # 1: ask to tell joke 
 # 2: ask difficulty level
 # 3: ask duration of workout
 # 4: create workout
+
+from inputHandling import *
+from outputHandling import *
+
 flow = [False, False, False, False, False]
-#flow = [True, True, True, True, True]
 name = ''
 diffLevel = ''
 unknownCount = 0
@@ -18,18 +18,21 @@ def chat():
     global flow, name, diffLevel, unknownCount
 
     while True:
+        # Greets the user and stores their name
         if not flow[0]:
             JimAsk("greetings+intro")
             reply = input("YOU: ")
             name = getName(reply)
             flow[0] = True
 
+        # Asks to tell a joke
         elif not flow[1]:
             JimAsk("ask to tell a joke", name)
             reply = input("YOU: ")
             saidJoke = tellJoke(reply)
             flow[1] = True
         
+        # Gets and parses the input for workout difficulty level
         elif not flow[2]:
             JimAsk("ask for level", saidJoke)
             reply = input("YOU: ")
@@ -40,6 +43,7 @@ def chat():
                 JimAsk("response for " + diffLevel, name)
                 flow[2] = True
         
+        # Gets and parses the input for workout duration
         elif not flow[3]:
             JimAsk("ask for duration")
             reply = input("YOU: ")
@@ -48,7 +52,8 @@ def chat():
                 JimAsk("try again")
             else:
                 flow[3] = True
-            
+        
+        # Creates and displays the personalized workout
         elif not flow[4]:
             JimAsk("reveal plan", name)
             createWorkout(diffLevel, int(duration))
@@ -60,37 +65,32 @@ def chat():
                 createWorkout(diffLevel, int(duration))
                 JimAsk("change workout")
                 reply = input("YOU: ")
-                
-            print("JIM: Awesome, happy to help, " + name + "!")      # continue conversation instead
+            
+            # Gateway to casual conversation
+            print("JIM: Awesome, happy to help, " + name + "!")      
             print("JIM: Now, I can try answering any questions you may have or... we can just chat about life!")
             flow[4] = True
                 
-        # Casual conversation
+        # Casual (free) conversation
         else:
             reply = input("YOU: ")
             outputCategory = parseInput(reply)
+
+            # Output the category for parsed input
             if outputCategory != None:
-                #print("DEBUG: Input parsed. Category: " + outputCategory[0])
                 JimSay(outputCategory, name)
                 if outputCategory[0] == "bye":
                     break
+            
+            # Unknown (un-parseable) user input
             else:
                 unknownCount += 1
                 if unknownCount % 3 == 0:
-                    #print("DEBUG: Try again")
                     JimAsk("try again")
                 outputTypes = ["filler", "tell a joke", "quote", "anecdote"]
-                JimSay(random.choice(outputTypes))
-
-                '''elif unknownCount % 5 == 0:
-                    print("DEBUG: filler")
-                    JimSay(["filler"], name)
-                elif unknownCount % 2 == 0:
-                    print("DEBUG: quote")
-                    JimSay(["quote"], name)
-                else:
-                    print("DEBUG: anecdote")
-                    JimSay(["anecdote"], name)'''
+                temp = random.choice(outputTypes)
+                print("Temp: ", temp)
+                JimSay([temp])
 
 
 chat()

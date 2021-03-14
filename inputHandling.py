@@ -1,10 +1,13 @@
 import json
 
-# create list of exercises
+
+# Loads and creates list of exercises
 with open('data/howToSteps.json') as f:
     outputCategories = json.load(f)
 exercisesList = outputCategories.keys()
 
+
+# Gets the user's name from reply
 def getName(reply):
     replyList = reply.split()
     if len(replyList) == 1:
@@ -16,6 +19,8 @@ def getName(reply):
     elif "i'm" in reply.lower():
         return replyList[replyList.index("I'm")+1]
 
+
+# Gets the difficulty level from reply
 def getLevel(reply):
     reply = reply.lower()
     if 'easy' in reply:
@@ -27,6 +32,8 @@ def getLevel(reply):
     else:
         return -1
 
+
+# Gets the workout duration from reply
 def getDuration(reply):
     replyList = reply.split()
     if len(replyList) == 1:
@@ -38,12 +45,8 @@ def getDuration(reply):
     else:
         return -1
 
-def resetFlow(flow):
-    for i in range(2,len(flow)):
-        flow[i] = False
 
-
-# Returns output category -> [category, exerciseName(opt.)]
+# Parses reply and returns closest output category -> [category, exerciseName(opt.)]
 def parseInput(reply):
     reply = reply.lower()
 
